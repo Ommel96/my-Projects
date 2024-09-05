@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}Profile{% endblock %}</h1>
+  <a href="/account/edit"><button>Edit Profile</button></a>
+{% endblock %}
+
+{% block content %}
+<div class="profile">
+  <div class="welcome">
+    <h1>Welcome, {{ user.username }}</h1>
+    <img style="max-width: 12em;max-height:12em" src="{{ url_for('static', filename=session.profile_picture) }}" alt="Profile Picture">
+  </div>
+
+  <div class="Stats">
+    <span style="color: white;">
+      <h2>Statistics</h2>
+      <p>Username:{{ username }}</p>
+      <p>E-Mail: {{ email }}</p>
+      <p>Games Played: {{ played }}</p>
+      <p>Wordles Solved: {{ solved }}</p>
+      <p>Overall Score: {{ overall_score }}</p>
+      <p>Playtime: {{ playtime }} Seconds</p>
+      <p>Wordle Solve Rate: {{ solve_rate }}</p>
+      <p>Average Attempts per Wordle: {{ avg_attempts }}</p>
+      <p>Average Score: {{ avg_score }}</p>
+      <p>Average Solving Time: {{ avg_time }} Seconds</p>
+      <p>Member Since: {{ member_since }}</p>
+    </span>
+  </div>
+</div>
+
+{% endblock %}

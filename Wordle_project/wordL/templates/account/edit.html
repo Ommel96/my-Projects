@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}Edit Profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="edit_pp" style="display: flex;">
+  <form method="POST" enctype="multipart/form-data">
+    <label style="color:#dd8603;">Change profile picture</label>
+    <label for='file'><img style="max-width: 12em; max-height:12:em;padding: 0" src="{{ url_for('static', filename=session.profile_picture) }}" alt="Profile Picture"></label>
+    <input type="file" name="file" accept="image/*">
+    <input type="submit" value="Upload" name="file">
+  </form>
+</div>
+<div class="editing">
+  <form method="POST" action="{{ url_for('account.edit') }}" id="editProfileForm">
+    <div class="item" style="padding-top: 1em; padding-bottom: 1em;">
+      <label style="color:#dd8603;">Change Credentials</label>
+    </div>
+    <div class="item">
+      <label for="username">Username:</label>
+      <input name="username" value="{{ username }}" required>
+      <input type="submit" value="Change Username" name="username_submit">
+    </div>
+    <div class="item">
+      <label for="email">E-Mail Address:</label>
+      <input name="email" value="{{ email }}" required>
+      <input type="submit" value="Change E-Mail" name="email_submit">
+    </div>
+    <div class="item">
+      <label for="password">Current Password:</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <div class="item" style="padding-top: 1em; padding-bottom: 1em;">
+      <label style="color:#dd8603;">Change Password</label>
+    </div>
+    <div class="item">
+      <label for="new_password">New Password:</label>
+      <input type="password" name="new_password" id="new_password">
+    </div>
+    <div class="item">
+      <label for="confirm_password">Confirm New Password:</label>
+      <input type="password" name="confirm_password" id="confirm_password">
+      <input type="submit" value="Change Password" name="password_submit">
+    </div>
+  </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('editProfileForm').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            return false;
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,291 @@
+html {
+    font-family: sans-serif;
+    background: #242424;
+    padding: 1rem;
+  }
+  
+  body {
+    max-width: 960px;
+    margin: 0 auto;
+    background: rgb(80, 80, 80);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #dd8603;
+    margin: 1rem 0;
+  }
+  label{
+    color: #ffffff;
+  }
+  
+  a {
+    color: #dd8603;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid rgb(255, 255, 255);
+  }
+  
+  li {
+    padding-top: .5em;
+  }
+
+  ul { 
+    padding-top: .4em;
+  }
+
+  nav {
+    background: rgb(49, 49, 49);
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
+  
+  nav h1 {
+    flex: auto;
+    margin: 0;
+  }
+  
+  nav h1 a {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  nav ul  {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a, nav ul li span, header .action {
+    display: block;
+    padding: 0.5rem;
+  }
+  
+  .content {
+    padding: 0 1rem 1rem;
+  }
+  
+  .content > header {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .content > header h1 {
+    flex: auto;
+    margin: 1rem 0 0.25rem 0;
+  }
+  
+  .flash {
+    margin: 1em 0;
+    padding: 1em;
+    background: #cae6f6;
+    border: 1px solid #ffffff;
+  }
+  
+  .post > header {
+    display: flex;
+    align-items: flex-end;
+    font-size: 0.85em;
+  }
+  
+  .post > header > div:first-of-type {
+    flex: auto;
+  }
+  
+  .post > header h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
+  
+  .post .about {
+    color: slategray;
+    font-style: italic;
+  }
+  
+  .post .body {
+    white-space: pre-line;
+  }
+  
+  .content:last-child {
+    margin-bottom: 0;
+  }
+  
+  .content form {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .content label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  .content input, .content textarea {
+    margin-bottom: 1em;
+  }
+  
+  .content textarea {
+    min-height: 12em;
+    resize: vertical;
+  }
+  
+  input.danger {
+    color: #cc2f2e;
+  }
+  
+  input[type=submit] {
+    align-self: start;
+    min-width: 10em;
+    color: white;
+    background-color: #808080;
+    border: none;
+  }
+
+  input[type=file] {
+    align-self: start;
+    min-width: 10em;
+    color: white;
+    background-color: #808080;
+    border: none;
+  }
+
+button {
+  color: white;
+  background-color: #808080;
+  border: none;
+}
+
+  .button-container form {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 10em;
+  }
+
+  .guessing form {
+    display:flex;
+    flex-direction: row;
+  }
+
+  input {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    position: sticky;
+  }
+
+  table, th, td {
+    padding: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+
+  tr:hover {background-color: #dd8603;}
+
+  /* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  list-style: padd;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: rgb(80, 80, 80);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  color: white;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sublist li {
+  padding-top: .1em;
+}
+
+.editing{
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.item {
+  margin-top: 4%;
+}
+
+.item input{
+  position:absolute;
+  left: 33.5%;
+}
+
+.item label{
+  width: min-content;
+}
+
+.item input[type=submit]{
+  margin-left: 12%;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.Stats {
+  display: flex;
+  margin-left: 10%;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+}

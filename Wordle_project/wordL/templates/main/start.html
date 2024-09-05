@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Play{% endblock %}</h1>
+<button onclick="get_popup()">Rules</button>
+{% endblock %}
+
+{% block content %}
+<article class="riddle">
+  {% if game_over %}
+  <header>
+    <div>
+      <h1>Today's word: <span style="color: rgb(0, 202, 0);">{{ wordle }}</span></h1>
+      <h1>Your Score: {{ score }} Points | {{ attempts }} Attempts | {{ time_used }} Seconds</h1>
+      {% if logged_in_user == None %}
+        <span style="color: white; font-weight: bold;"><a style="display: inline;" class="action" href="{{ url_for('auth.login') }}">Log in</a>to save your score and compete with others!</span>
+        
+      {% endif %}
+    </div>
+  </header>
+  {% endif %}
+
+<div class="guessing">
+  <form method="post" action="{{ url_for('wordle.wordlepage') }}">
+    <label for="guess">Your guess:</label>
+    <input name="guess" required autofocus {% if game_over %}disabled{% endif %}>
+    {% if game_started == False %}
+      <input type="submit" value="Start!" name="Start!"{% if game_over %}disabled{% endif %}>
+    {% else %}
+      <input type="submit" value="Guess!" {% if game_over %}disabled{% endif %}>
+    {% endif %}
+    {% if game_over %} <input type="submit" name="reset" value="reset"> {% endif %}
+  </form>
+</div>
+
+  <div>
+    <h2>Letters:</h2>
+    {% for letter in keys %}
+      {% if letter_status[letter] == 'correct' %}
+      <span style="color: rgb(0, 202, 0);">{{ letter }}</span>
+      {% elif letter_status[letter] == 'wrong_position' %}
+      <span style="color: orange;">{{ letter }}</span>
+      {% elif letter_status[letter] == 'incorrect' %}
+      <span style="color: red;">{{ letter }}</span>
+      {% else %}
+      <span style="color: white;">{{ letter }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if guesses %}
+  <div>
+    <h2>Guesses:</h2>
+    {% for guess, comparison_result in guesses %}
+    <div>
+      <p>
+        {% for char, status in comparison_result %}
+        {% if status == 'correct' %}
+        <span style="color: rgb(0, 202, 0);">{{ char }}</span>
+        {% elif status == 'wrong_position' %}
+        <span style="color: orange;">{{ char }}</span>
+        {% else %}
+        <span style="color: red;">{{ char }}</span>
+        {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>
+
+  <!-- Popup modal -->
+  <div id="rulesModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Rules of the Game</h2>
+      <p>Here are the rules of the game...</p>
+      <ul>
+        <li>You have 6 chances to guess a 5 letter word</li>
+        <li>After every guess, you will see the word you entered with colored letters.</li>
+          <ul>
+          <div class="sublist">
+            <li><a style="color: rgb(0, 202, 0);">Green: </a>The letter appears in the word and also at the right spot.</li>
+            <li><a style="color: orange;">Orange: </a>The letter appears in the word but at a different spot.</li>
+            <li><a style="color: red;">Red: </a>The letter does not appear in the word at all.</li>
+            </div>
+          </ul>
+        <li>You will recieve points based on how many letters you guessed and how many tries you needed</li>
+        <li>As soon as you click the "Start" button, a timer will start. <br />Solve the wordle quick enough to earn bonus points. Aim for the top score!</li>
+        <li>The game ends once you have used up all your guesses or guessed the right word</li>
+        <!-- Add more rules as needed -->
+      </ul>
+      <button id="closeButton">Got it!</button>
+    </div>
+  </div>
+
+  <script>
+  // Get the modal
+
+  function get_popup() {
+
+    var modal = document.getElementById("rulesModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Get the button that closes the modal
+    var closeButton = document.getElementById("closeButton");
+
+    modal.style.display ="block";
+
+    // When the user clicks on <span> (x) or the close button, close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    closeButton.onclick = function() {
+      modal.style.display = "none";
+    } 
+  }
+  // Function to start the timer
+  function startTimer() {
+    fetch('{{ url_for("wordle.start_timer") }}', {method: 'POST'});
+  }
+
+  // Display the modal when the page loads
+  window.onload = function() {
+    modal.style.display = "block";
+  }
+
+  // Run get_popup if game_started is False
+  document.addEventListener("DOMContentLoaded", function() {
+    {% if game_started == False %}
+      get_popup();
+    {% endif %}
+  });
+  </script>
+{% endblock %}
