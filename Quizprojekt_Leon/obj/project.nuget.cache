@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "lLW3i1PhPDbKgnaDZO6gal9MbYu8DUCMOjaalFJcQ56xQWVbHr0SGcMEYjgw6aaAOk/SBd1Lu8usqtmlcOfqmw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\leonk\\Source\\repos\\Ommel96\\Quizprojekt_Leon\\Quizprojekt_Leon.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\leonk\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\leonk\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\leonk\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\leonk\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.16\\microsoft.netcore.app.host.win-x64.7.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
